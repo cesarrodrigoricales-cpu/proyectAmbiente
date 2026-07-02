@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sembrando Conciencia — UAI 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Librería de confeti con soporte de emojis, para celebrar 🎉 -->
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="logo-leaf">🌿</span>
+      <span class="logo-text">Sembrando Conciencia</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#problema">Problema</a></li>
+      <li><a href="#justificacion">Justificación</a></li>
+      <li><a href="#actividades">Actividades</a></li>
+      <li><a href="#galeria">Fotos</a></li>
+      <li><a href="#integrantes">Integrantes</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══════════ HERO / TÍTULO ══════════ -->
+  <section id="inicio" class="hero">
+    <div class="kawaii-blob blob-pink blob-hero-1"></div>
+    <div class="kawaii-blob blob-yellow blob-hero-2"></div>
+    <div class="kawaii-blob blob-blue blob-hero-3"></div>
+    <span class="sticker-star" style="top:10%; right:20%;">⭐</span>
+    <span class="sticker-star" style="top:30%; right:8%; animation-delay:-1s; font-size:1.4rem;">✨</span>
+    <span class="sticker-star" style="bottom:32%; left:8%; animation-delay:-1.8s; font-size:1.6rem;">🌈</span>
+
+    <canvas id="leafCanvas"></canvas>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Universidad Autónoma de Ica · Facultad de Ciencias Administración e Ingeniería</p>
+      <h1 class="hero-title reveal">
+        Sembrando<br/><em>Conciencia</em>
+      </h1>
+      <p class="hero-sub-title reveal">Proyecto Espacio Verde para la Educación Ambiental 🌻</p>
+      <div class="hero-meta reveal">
+        <span class="meta-tag">📚 Cultura Ambiental</span>
+        <span class="meta-tag">🏭 Ingeniería Industrial</span>
+        <span class="meta-tag">📅 Ciclo I · 2026</span>
+        <span class="meta-tag">🏫 I.E. Chinchaysuyo - Balconcito</span>
+      </div>
+      <div class="hero-cta reveal">
+        <a href="#actividades" class="btn-primary">Ver actividades 🚀</a>
+        <a href="#galeria" class="btn-ghost">Ver fotos 📸</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Descubre más ✨</span>
+      <div class="scroll-arrow"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-chip reveal-right">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Fechas</span>
+      </div>
+      <div class="stat-chip reveal-right" style="animation-delay:.2s">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Actividades</span>
+      </div>
+      <div class="stat-chip reveal-right" style="animation-delay:.4s">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Integrantes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divisor festoneado: cielo -> blanco -->
+  <div class="page-divider" data-color="#bfe7ff">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 C0,0 30,40 60,40 C90,40 90,0 120,0 C150,0 150,40 180,40 C210,40 210,0 240,0 C270,0 270,40 300,40 C330,40 330,0 360,0 C390,0 390,40 420,40 C450,40 450,0 480,0 C510,0 510,40 540,40 C570,40 570,0 600,0 C630,0 630,40 660,40 C690,40 690,0 720,0 C750,0 750,40 780,40 C810,40 810,0 840,0 C870,0 870,40 900,40 C930,40 930,0 960,0 C990,0 990,40 1020,40 C1050,40 1050,0 1080,0 C1110,0 1110,40 1140,40 C1170,40 1170,0 1200,0 L1200,0 L0,0 Z" fill="#bfe7ff"></path></svg>
+    <div class="divider-icons">🌼 🐝 🌼</div>
+  </div>
+
+  <!-- ══════════ PROBLEMA ══════════ -->
+  <section id="problema" class="section-block bg-white style-kids">
+    <div class="kawaii-blob blob-green" style="width:150px;height:150px;top:6%;right:38%;"></div>
+    <div class="kawaii-blob blob-yellow blob-prob-corner"></div>
+
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow reveal">¿Por qué este proyecto? 🤔</p>
+        <h2 class="section-title reveal">Problemática</h2>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-text reveal">
+          <p>Como parte de la observación realizada para el desarrollo del proyecto <strong>"Sembrando Conciencia"</strong>, se visitó la institución educativa Colegio Chinchaysuyo - Balconcito, ubicada en la provincia de Chincha. Durante el recorrido por las instalaciones, se pudo observar que el colegio cuenta con espacios amplios y áreas verdes que contribuyen a brindar un ambiente agradable y adecuado para los estudiantes.</p>
+          <p>Sin embargo, también se identificaron diversas dificultades relacionadas con el cuidado ambiental. En distintas zonas del colegio se encontraron <strong>botellas de plástico y otros residuos sólidos</strong> cerca de las áreas verdes, afectando la limpieza y conservación de los espacios comunes.</p>
+          <p>Frente a ello, surge la propuesta de desarrollar acciones ambientales y actividades dinámicas que permitan incentivar en los estudiantes una mayor participación en el cuidado de su entorno, promoviendo hábitos de limpieza, reciclaje y conservación de las áreas verdes de manera creativa y participativa.</p>
+        </div>
+        <div class="problem-cards reveal-right">
+          <div class="prob-card">
+            <span class="prob-icon">🗑️</span>
+            <h4>Residuos sólidos</h4>
+            <p>Presencia de botellas plásticas y basura cerca de las áreas verdes del plantel.</p>
+          </div>
+          <div class="prob-card">
+            <span class="prob-icon">🌱</span>
+            <h4>Falta de conciencia</h4>
+            <p>Hábitos insuficientes de responsabilidad ambiental en la comunidad escolar.</p>
+          </div>
+          <div class="prob-card">
+            <span class="prob-icon">♻️</span>
+            <h4>Manejo inadecuado</h4>
+            <p>Clasificación incorrecta y descarte inapropiado de los residuos dentro de la institución.</p>
+          </div>
+          <div class="prob-card">
+            <span class="prob-icon">🏫</span>
+            <h4>Necesidad de acción</h4>
+            <p>Urgencia de implementar programas educativos prácticos sobre cuidado ambiental.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-photos reveal">
+        <p class="photos-label">📸 Fotos de la problemática</p>
+        <div class="photos-row">
+          <div class="photo-slot"><img src="images/problema/p1.jpg" alt="Problema 1" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">problema/p1.jpg</div></div>
+          <div class="photo-slot"><img src="images/problema/p2.jpg" alt="Problema 2" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">problema/p2.jpg</div></div>
+          <div class="photo-slot"><img src="images/problema/p3.jpg" alt="Problema 3" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">problema/p3.jpg</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-divider" data-color="#fff6df">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 C0,0 30,40 60,40 C90,40 90,0 120,0 C150,0 150,40 180,40 C210,40 210,0 240,0 C270,0 270,40 300,40 C330,40 330,0 360,0 C390,0 390,40 420,40 C450,40 450,0 480,0 C510,0 510,40 540,40 C570,40 570,0 600,0 C630,0 630,40 660,40 C690,40 690,0 720,0 C750,0 750,40 780,40 C810,40 810,0 840,0 C870,0 870,40 900,40 C930,40 930,0 960,0 C990,0 990,40 1020,40 C1050,40 1050,0 1080,0 C1110,0 1110,40 1140,40 C1170,40 1170,0 1200,0 L1200,0 L0,0 Z" fill="#fff6df"></path></svg>
+    <div class="divider-icons">🌸 🦋 🌸</div>
+  </div>
+
+  <!-- ══════════ JUSTIFICACIÓN ══════════ -->
+  <section id="justificacion" class="section-block bg-pale style-kids">
+    <div class="kawaii-blob blob-blue blob-just-left"></div>
+    <div class="kawaii-blob blob-pink blob-just-right"></div>
+
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow reveal">¿Por qué es importante? ✨</p>
+        <h2 class="section-title reveal">Justificación</h2>
+      </div>
+      <div class="just-grid">
+        <div class="just-visual reveal">
+          <div class="just-img-wrap">
+            <img src="images/justificacion/j1.jpg" alt="Justificación" onerror="this.parentElement.classList.add('ph')"/>
+            <div class="ph-label">justificacion/j1.jpg</div>
+          </div>
+        </div>
+        <div class="just-text reveal-right">
+          <p>El proyecto <strong>"Sembrando Conciencia"</strong> se realiza con el propósito de fortalecer la conciencia ambiental en los estudiantes de 4.° grado de primaria del Colegio Chinchaysuyo - Balconcito, promoviendo hábitos relacionados con la limpieza, el reciclaje y el cuidado de las áreas verdes.</p>
+          <p>Se considera importante desarrollar este proyecto porque los niños, desde temprana edad, pueden aprender y practicar acciones positivas para el cuidado del medio ambiente. A través de actividades dinámicas, juegos y concursos ecológicos, los estudiantes podrán comprender de manera divertida la importancia de mantener limpio su entorno.</p>
+
+          <div class="just-objectives">
+            <h3>🎯 Objetivo General</h3>
+            <p>Sensibilizar a los estudiantes de 4.° grado de primaria sobre la importancia del cuidado del medio ambiente mediante actividades dinámicas, juegos ecológicos y acciones participativas.</p>
+            <h3>📌 Objetivos Específicos</h3>
+            <ul>
+              <li>Promover el cuidado del aire, agua y suelo</li>
+              <li>Desarrollar actividades lúdicas y educativas</li>
+              <li>Incentivar la participación activa de los estudiantes</li>
+              <li>Promover el sembrado y cuidado de plantas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section-photos reveal">
+        <p class="photos-label">📸 Fotos de referencia</p>
+        <div class="photos-row">
+          <div class="photo-slot"><img src="images/justificacion/j2.jpg" alt="Justif 2" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">justificacion/j2.jpg</div></div>
+          <div class="photo-slot"><img src="images/justificacion/j3.jpg" alt="Justif 3" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">justificacion/j3.jpg</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-divider" data-color="#fffaf0">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 C0,0 30,40 60,40 C90,40 90,0 120,0 C150,0 150,40 180,40 C210,40 210,0 240,0 C270,0 270,40 300,40 C330,40 330,0 360,0 C390,0 390,40 420,40 C450,40 450,0 480,0 C510,0 510,40 540,40 C570,40 570,0 600,0 C630,0 630,40 660,40 C690,40 690,0 720,0 C750,0 750,40 780,40 C810,40 810,0 840,0 C870,0 870,40 900,40 C930,40 930,0 960,0 C990,0 990,40 1020,40 C1050,40 1050,0 1080,0 C1110,0 1110,40 1140,40 C1170,40 1170,0 1200,0 L1200,0 L0,0 Z" fill="#fffaf0"></path></svg>
+    <div class="divider-icons">🎨 🖍️ 🎨</div>
+  </div>
+
+  <!-- ══════════ ACTIVIDADES ══════════ -->
+  <section id="actividades" class="section-block bg-white style-kids">
+    <div class="kawaii-blob blob-yellow blob-act-top"></div>
+    <div class="kawaii-blob blob-green blob-act-middle"></div>
+
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow reveal">¡Lo que realizamos! 🎉</p>
+        <h2 class="section-title reveal">Actividades Programadas</h2>
+        <p class="section-desc reveal">4 jornadas llenas de diversión de 2 horas cada una, con actividades lúdicas y educativas diseñadas especialmente para los niños.</p>
+      </div>
+
+      <!-- JORNADA 1 -->
+      <div class="jornada reveal">
+        <div class="jornada-header">
+          <span class="jornada-badge">Jornada 1</span>
+          <h3 class="jornada-fecha">📅 Miércoles 03 de Junio</h3>
+          <span class="jornada-duracion">⏱ 2 horas</span>
+        </div>
+        <div class="act-grid">
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j1-pupiletra.jpg" alt="Pupiletra" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j1-pupiletra.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">40 min</span>
+              <h4>🔤 Concurso de Pupiletra Ambiental</h4>
+              <p>Los niños identifican palabras relacionadas con el medio ambiente, reciclaje, naturaleza y limpieza. Fortalece el trabajo en equipo y el reconocimiento de conceptos ambientales.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j1-semaforo.jpg" alt="Semáforo" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j1-semaforo.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">30 min</span>
+              <h4>🚦 Semáforo Ecológico</h4>
+              <p>Los estudiantes identifican si las acciones mencionadas son positivas o negativas para el ambiente usando tarjetas de color verde (buenas) y rojo (dañinas).</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j1-papa.jpg" alt="Papa Caliente" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j1-papa.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">20 min</span>
+              <h4>🎵 Papa Caliente Ambiental</h4>
+              <p>Los estudiantes pasan una pelota con música. Al detenerse, el que la tenga responde preguntas sobre medio ambiente, reciclaje y áreas verdes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="jornada-media reveal">
+          <div class="video-slot">
+            <video controls poster="images/actividades/j1-video-poster.jpg">
+              <source src="videos/jornada1.mp4" type="video/mp4"/>
+            </video>
+            <p class="media-hint">📹 Reemplaza con <code>videos/jornada1.mp4</code></p>
+          </div>
+          <div class="photos-row">
+            <div class="photo-slot"><img src="images/actividades/j1-foto1.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j1-foto1.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j1-foto2.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j1-foto2.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j1-foto3.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j1-foto3.jpg</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JORNADA 2 -->
+      <div class="jornada reveal">
+        <div class="jornada-header">
+          <span class="jornada-badge">Jornada 2</span>
+          <h3 class="jornada-fecha">📅 Miércoles 17 de Junio</h3>
+          <span class="jornada-duracion">⏱ 2 horas</span>
+        </div>
+        <div class="act-grid">
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j2-bingo.jpg" alt="Bingo" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j2-bingo.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">40 min</span>
+              <h4>🎱 Bingo Ecológico</h4>
+              <p>Bingo con imágenes y palabras sobre reciclaje y naturaleza. Los estudiantes completan sus cartillas identificando los términos ambientales.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j2-verdadero.jpg" alt="Verdadero o Falso" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j2-verdadero.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">30 min</span>
+              <h4>✅ Verdadero o Falso Ambiental</h4>
+              <p>Se leen afirmaciones ambientales y los estudiantes responden levantando carteles. Refuerza conocimientos sobre contaminación y reciclaje.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j2-clasifica.jpg" alt="Clasifica y Aprende" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j2-clasifica.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">20 min</span>
+              <h4>🗂️ Clasifica y Aprende</h4>
+              <p>Los estudiantes separan residuos en categorías usando tachos de colores, aprendiendo qué materiales pueden reciclarse.</p>
+            </div>
+          </div>
+        </div>
+        <div class="jornada-media reveal">
+          <div class="video-slot">
+            <video controls poster="images/actividades/j2-video-poster.jpg">
+              <source src="videos/jornada2.mp4" type="video/mp4"/>
+            </video>
+            <p class="media-hint">📹 Reemplaza con <code>videos/jornada2.mp4</code></p>
+          </div>
+          <div class="photos-row">
+            <div class="photo-slot"><img src="images/actividades/j2-foto1.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j2-foto1.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j2-foto2.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j2-foto2.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j2-foto3.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j2-foto3.jpg</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JORNADA 3 -->
+      <div class="jornada reveal">
+        <div class="jornada-header">
+          <span class="jornada-badge">Jornada 3</span>
+          <h3 class="jornada-fecha">📅 Miércoles 1 de Julio</h3>
+          <span class="jornada-duracion">⏱ 2 horas</span>
+        </div>
+        <div class="act-grid">
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j3-carrera.jpg" alt="Carrera del Reciclaje" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j3-carrera.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">40 min</span>
+              <h4>🏃 Carrera del Reciclaje</h4>
+              <p>Competencia grupal clasificando residuos en tachos según material: plástico, papel, vidrio u orgánico. El equipo más rápido y correcto gana.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j3-adivinanzas.jpg" alt="Adivinanzas" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j3-adivinanzas.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">30 min</span>
+              <h4>🧩 Concurso de Adivinanzas Ecológicas</h4>
+              <p>Adivinanzas sobre plantas, reciclaje y naturaleza. Los estudiantes escuchan pistas y responden desarrollando atención y razonamiento grupal.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j3-ciclo.jpg" alt="Ciclo de la Planta" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j3-ciclo.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">20 min</span>
+              <h4>🌱 El Ciclo de la Planta</h4>
+              <p>Los estudiantes ordenan imágenes del crecimiento de una planta, desde la semilla hasta la flor, comprendiendo la importancia del agua y la luz solar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="jornada-media reveal">
+          <div class="video-slot">
+            <video controls poster="images/actividades/j3-video-poster.jpg">
+              <source src="videos/jornada3.mp4" type="video/mp4"/>
+            </video>
+            <p class="media-hint">📹 Reemplaza con <code>videos/jornada3.mp4</code></p>
+          </div>
+          <div class="photos-row">
+            <div class="photo-slot"><img src="images/actividades/j3-foto1.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j3-foto1.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j3-foto2.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j3-foto2.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j3-foto3.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j3-foto3.jpg</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JORNADA 4 -->
+      <div class="jornada jornada--final reveal">
+        <div class="jornada-header">
+          <span class="jornada-badge jornada-badge--gold">Jornada Final 🏆</span>
+          <h3 class="jornada-fecha">📅 Miércoles 17 de Julio</h3>
+          <span class="jornada-duracion">⏱ 2 horas</span>
+        </div>
+        <div class="act-grid">
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j4-palabras.jpg" alt="Completa la Palabra" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j4-palabras.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">30 min</span>
+              <h4>✏️ Completa la Palabra Ambiental</h4>
+              <p>Los estudiantes completan palabras relacionadas con el medio ambiente usando fichas con letras faltantes, reforzando vocabulario ecológico.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j4-sembrado.jpg" alt="Sembrado" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j4-sembrado.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">50 min</span>
+              <h4>🌿 Sembrado de Plantitas</h4>
+              <p>Actividad práctica de sembrado con participación de los estudiantes y la docente. Aprenden a sembrar y cuidar plantas fomentando el trabajo en equipo.</p>
+            </div>
+          </div>
+          <div class="act-card">
+            <div class="act-card-img"><img src="images/actividades/j4-tacho.jpg" alt="Tacho Ecológico" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">actividades/j4-tacho.jpg</div></div>
+            <div class="act-card-body">
+              <span class="act-duration">20 min</span>
+              <h4>🗑️ Presentación del Tacho Ecológico</h4>
+              <p>Cierre del proyecto con presentación del tacho ecológico elaborado para promover el adecuado manejo de residuos sólidos en la institución.</p>
+            </div>
+          </div>
+        </div>
+        <div class="jornada-media reveal">
+          <div class="video-slot">
+            <video controls poster="images/actividades/j4-video-poster.jpg">
+              <source src="videos/jornada4.mp4" type="video/mp4"/>
+            </video>
+            <p class="media-hint">📹 Reemplaza con <code>videos/jornada4.mp4</code></p>
+          </div>
+          <div class="photos-row">
+            <div class="photo-slot"><img src="images/actividades/j4-foto1.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j4-foto1.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j4-foto2.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j4-foto2.jpg</div></div>
+            <div class="photo-slot"><img src="images/actividades/j4-foto3.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/><div class="ph-label">j4-foto3.jpg</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="page-divider" data-color="#1f4d31">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 C0,0 30,40 60,40 C90,40 90,0 120,0 C150,0 150,40 180,40 C210,40 210,0 240,0 C270,0 270,40 300,40 C330,40 330,0 360,0 C390,0 390,40 420,40 C450,40 450,0 480,0 C510,0 510,40 540,40 C570,40 570,0 600,0 C630,0 630,40 660,40 C690,40 690,0 720,0 C750,0 750,40 780,40 C810,40 810,0 840,0 C870,0 870,40 900,40 C930,40 930,0 960,0 C990,0 990,40 1020,40 C1050,40 1050,0 1080,0 C1110,0 1110,40 1140,40 C1170,40 1170,0 1200,0 L1200,0 L0,0 Z" fill="#1f4d31"></path></svg>
+    <div class="divider-icons">🌟 🌙 🌟</div>
+  </div>
+
+  <!-- ══════════ GALERÍA GENERAL ══════════ -->
+  <section id="galeria" class="section-block bg-dark-green">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow reveal">Momentos capturados 📸</p>
+        <h2 class="section-title reveal">Galería de Fotos</h2>
+        <p class="section-desc reveal">Agrega tus fotos con los nombres indicados y aparecerán automáticamente aquí.</p>
+      </div>
+
+      <div class="gallery-filters reveal">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="jornada1">Jornada 1</button>
+        <button class="filter-btn" data-filter="jornada2">Jornada 2</button>
+        <button class="filter-btn" data-filter="jornada3">Jornada 3</button>
+        <button class="filter-btn" data-filter="jornada4">Jornada 4</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item gallery-item--tall reveal" data-cat="jornada1">
+          <img src="images/gallery/g1.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g1.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 1</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada1">
+          <img src="images/gallery/g2.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g2.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 1</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada2">
+          <img src="images/gallery/g3.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g3.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 2</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada2">
+          <img src="images/gallery/g4.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g4.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 2</span></div>
+        </div>
+        <div class="gallery-item gallery-item--wide reveal" data-cat="jornada2">
+          <img src="images/gallery/g5.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g5.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 2</span></div>
+        </div>
+        <div class="gallery-item gallery-item--wide reveal" data-cat="jornada3">
+          <img src="images/gallery/g6.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g6.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 3</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada3">
+          <img src="images/gallery/g7.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g7.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 3</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada4">
+          <img src="images/gallery/g8.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g8.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 4</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada4">
+          <img src="images/gallery/g9.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g9.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 4</span></div>
+        </div>
+        <div class="gallery-item reveal" data-cat="jornada4">
+          <img src="images/gallery/g10.jpg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">gallery/g10.jpg</div>
+          <div class="gallery-overlay"><span>Jornada 4</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">‹</button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente">›</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+    </div>
+  </section>
+
+  <div class="page-divider" data-color="#fff6df">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 C0,0 30,40 60,40 C90,40 90,0 120,0 C150,0 150,40 180,40 C210,40 210,0 240,0 C270,0 270,40 300,40 C330,40 330,0 360,0 C390,0 390,40 420,40 C450,40 450,0 480,0 C510,0 510,40 540,40 C570,40 570,0 600,0 C630,0 630,40 660,40 C690,40 690,0 720,0 C750,0 750,40 780,40 C810,40 810,0 840,0 C870,0 870,40 900,40 C930,40 930,0 960,0 C990,0 990,40 1020,40 C1050,40 1050,0 1080,0 C1110,0 1110,40 1140,40 C1170,40 1170,0 1200,0 L1200,0 L0,0 Z" fill="#fff6df"></path></svg>
+    <div class="divider-icons">🐞 🍃 🐞</div>
+  </div>
+
+  <!-- ══════════ INTEGRANTES ══════════ -->
+  <section id="integrantes" class="section-block bg-pale style-kids">
+    <div class="kawaii-blob blob-pink blob-team-1"></div>
+    <div class="kawaii-blob blob-blue blob-team-2"></div>
+
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow reveal">Quienes lo hicieron posible 👥</p>
+        <h2 class="section-title reveal">Integrantes del Proyecto</h2>
+        <p class="section-desc reveal">Estudiantes de Ingeniería Industrial — Cultura Ambiental · Ciclo I 2026</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal" data-delay="0">
+          <div class="team-photo">
+            <img src="images/team/kevin.png" alt="Kevin Wilson Nañez Clemente" onerror="this.parentElement.classList.add('ph')"/>
+            <div class="ph-label">team/kevin.png</div>
+          </div>
+          <div class="team-info">
+            <h4 class="team-name">Kevin Wilson Nañez Clemente</h4>
+            <p class="team-role">Integrante</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal" data-delay="100">
+          <div class="team-photo">
+            <img src="images/team/crhistian.png" alt="Cristhian Alexander Arteaga Garavito" onerror="this.parentElement.classList.add('ph')"/>
+            <div class="ph-label">team/crhistian.png</div>
+          </div>
+          <div class="team-info">
+            <h4 class="team-name">Cristhian Alexander Arteaga Garavito</h4>
+            <p class="team-role">Integrante</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal" data-delay="200">
+          <div class="team-photo">
+            <img src="images/team/roberto.png" alt="Robert Joan Chavez Pecho" onerror="this.parentElement.classList.add('ph')"/>
+            <div class="ph-label">team/roberto.png</div>
+          </div>
+          <div class="team-info">
+            <h4 class="team-name">Robert Joan Chavez Pecho</h4>
+            <p class="team-role">Integrante</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal" data-delay="300">
+          <div class="team-photo">
+            <img src="images/team/shany.png" alt="Shany Estefanía Guerra Giménez" onerror="this.parentElement.classList.add('ph')"/>
+            <div class="ph-label">team/shany.jpg</div>
+          </div>
+          <div class="team-info">
+            <h4 class="team-name">Shany Estefanía Guerra Giménez</h4>
+            <p class="team-role">Integrante</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal" data-delay="400">
+          <div class="team-photo">
+            <img src="images/team/solanch.png" alt="Solanch Dacne Flores Torres" onerror="this.parentElement.classList.add('ph')"/>
+            <div class="ph-label">team/solanch.png</div>
+          </div>
+          <div class="team-info">
+            <h4 class="team-name">Solanch Dacne Flores Torres</h4>
+            <p class="team-role">Integrante</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="group-photo reveal">
+        <p class="photos-label">📸 Foto grupal del equipo</p>
+        <div class="group-img-wrap">
+          <img src="images/team/grupal.jpg" alt="Foto grupal" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="ph-label">team/grupal.jpg — Foto grupal del equipo</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <button class="btn-primary footer-celebrate" id="celebrateBtn">¡Celebremos! 🎉</button>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span style="font-size:2.5rem">🌿</span>
+          <p class="footer-tagline">Sembrando Conciencia<br/><em>Proyecto Espacio Verde para la Educación Ambiental</em></p>
+        </div>
+        <div class="footer-info">
+          <p>🏛️ Universidad Autónoma de Ica</p>
+          <p>📚 Facultad de Ciencias Administración e Ingeniería</p>
+          <p>🏭 Carrera: Ingeniería Industrial</p>
+          <p>📖 Asignatura: Cultura Ambiental</p>
+          <p>📅 Ciclo I — Chincha, 2026</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Universidad Autónoma de Ica · Proyecto "Sembrando Conciencia"</p>
+        <p>Hecho con 💚 por estudiantes de Ingeniería Industrial</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mascota Semillita 🌱 -->
+  <div class="mascot-bubble hidden-bubble" id="mascotBubble">¡Hola! Soy Semillita 🌱</div>
+  <svg class="mascot-float" id="mascotFloat" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="128" rx="30" ry="8" fill="#000" opacity="0.12"/>
+    <path d="M60 40 C40 20, 15 25, 10 5 C30 5, 45 18, 55 35 Z" fill="#7ed957" stroke="#3a2e26" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M60 40 C80 20, 105 25, 110 5 C90 5, 75 18, 65 35 Z" fill="#4caf3c" stroke="#3a2e26" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="60" cy="80" r="42" fill="#8fe06a" stroke="#3a2e26" stroke-width="4"/>
+    <circle cx="45" cy="75" r="8" fill="#fff" stroke="#3a2e26" stroke-width="3"/>
+    <circle cx="75" cy="75" r="8" fill="#fff" stroke="#3a2e26" stroke-width="3"/>
+    <circle cx="46" cy="76" r="3.4" fill="#3a2e26"/>
+    <circle cx="76" cy="76" r="3.4" fill="#3a2e26"/>
+    <circle cx="35" cy="92" r="6" fill="#ff9fb8" opacity="0.8"/>
+    <circle cx="85" cy="92" r="6" fill="#ff9fb8" opacity="0.8"/>
+    <path d="M48 96 Q60 106 72 96" fill="none" stroke="#3a2e26" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+
+  <button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
