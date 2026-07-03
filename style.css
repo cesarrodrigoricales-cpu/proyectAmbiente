@@ -167,6 +167,13 @@ a:focus-visible, button:focus-visible {
 .blob-yellow { background: var(--sun);       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; animation-delay: -1.5s; }
 .blob-blue   { background: var(--sky-deep);  border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; animation-delay: -3s; }
 .blob-green  { background: var(--grass);     border-radius: 40% 60% 40% 60% / 50% 50% 50% 50%; animation-delay: -2.2s; }
+.blob-tangerine { background: var(--tangerine); border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%; animation-delay: -0.8s; }
+.blob-grape  { background: var(--grape);     border-radius: 55% 45% 45% 55% / 45% 55% 45% 55%; animation-delay: -2.6s; }
+
+/* Variantes de forma — para que no sean solo "blobs", sino amiguitos distintos */
+.blob-circle       { border-radius: 50% !important; }
+.blob-round-square  { border-radius: 30% 26% 32% 28% / 28% 32% 26% 30% !important; }
+.blob-drop          { border-radius: 50% 50% 50% 6% / 50% 50% 6% 50% !important; }
 
 .blob-hero-1 { width: 130px; height: 130px; top: 12%; left: 3%; }
 .blob-hero-2 { width: 170px; height: 150px; bottom: 10%; right: 3%; }
@@ -818,3 +825,162 @@ a:focus-visible, button:focus-visible {
   .jornada-media .photos-row { grid-template-columns: repeat(3, 1fr); }
   .section-title { font-size: 2.2rem; }
 }
+
+/* ==========================================================================
+   BLOBS CON CARITA — caritas tiernas + bracitos que saludan
+   Se inyectan automáticamente por blob-faces.js dentro de cada .kawaii-blob
+   ========================================================================== */
+
+/* Aseguramos que los brazos puedan sobresalir del blob sin recortarse */
+.kawaii-blob { overflow: visible; }
+
+.blob-face {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ojitos */
+.blob-eye {
+  position: absolute;
+  top: 36%;
+  width: 10%;
+  height: 10%;
+  min-width: 6px;
+  min-height: 6px;
+  background: var(--ink);
+  border-radius: 50%;
+  transform-origin: center;
+  animation: blobBlink 4.5s ease-in-out infinite;
+}
+.blob-eye::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 12%;
+  width: 35%;
+  height: 35%;
+  background: var(--white);
+  border-radius: 50%;
+}
+.eye-left { left: 28%; }
+.eye-right { left: 58%; }
+
+/* Cachetitos sonrojados */
+.blob-blush {
+  position: absolute;
+  top: 46%;
+  width: 13%;
+  height: 8%;
+  min-width: 7px;
+  min-height: 5px;
+  background: rgba(255, 122, 168, 0.55);
+  border-radius: 50%;
+}
+.blush-left { left: 12%; }
+.blush-right { left: 72%; }
+
+/* Boquita — sonrisa curva simple */
+.blob-mouth {
+  position: absolute;
+  top: 52%;
+  left: 41%;
+  width: 18%;
+  height: 10%;
+  min-width: 9px;
+  min-height: 6px;
+  border: 0 solid transparent;
+  border-bottom: 3px solid var(--ink);
+  border-radius: 0 0 60% 60% / 0 0 100% 100%;
+}
+
+@keyframes blobBlink {
+  0%, 88%, 100% { transform: scaleY(1); }
+  92% { transform: scaleY(0.15); }
+  96% { transform: scaleY(1); }
+}
+
+/* Bracitos tiernos que se van saludando */
+.blob-arm {
+  position: absolute;
+  top: 44%;
+  width: 26%;
+  height: 11%;
+  min-width: 16px;
+  min-height: 8px;
+  background-color: inherit;
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  z-index: 1;
+}
+.arm-left {
+  left: -15%;
+  transform-origin: 100% 50%;
+  animation: armWaveLeft 2.6s ease-in-out infinite;
+}
+.arm-right {
+  right: -15%;
+  transform-origin: 0% 50%;
+  animation: armWaveRight 2.6s ease-in-out infinite;
+}
+
+@keyframes armWaveLeft {
+  0%, 100% { transform: rotate(6deg); }
+  50% { transform: rotate(-28deg); }
+}
+@keyframes armWaveRight {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(28deg); }
+}
+
+/* Piecitos — cuelgan del borde inferior y se columpian con su pie redondito */
+.blob-leg {
+  position: absolute;
+  bottom: -16%;
+  width: 11%;
+  height: 24%;
+  min-width: 6px;
+  min-height: 16px;
+  background-color: inherit;
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  transform-origin: 50% 0%;
+  z-index: 1;
+}
+.blob-leg::after {
+  content: "";
+  position: absolute;
+  bottom: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 165%;
+  height: 42%;
+  background-color: inherit;
+  border: 3px solid var(--ink);
+  border-radius: 50% 50% 45% 45%;
+}
+.leg-left {
+  left: 30%;
+  animation: legSwingLeft 1.9s ease-in-out infinite;
+}
+.leg-right {
+  left: 56%;
+  animation: legSwingRight 1.9s ease-in-out infinite;
+}
+
+@keyframes legSwingLeft {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+@keyframes legSwingRight {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+@media (max-width: 640px) {
+  .blob-arm, .blob-leg, .blob-leg::after { border-width: 2.5px; }
+}
+
+/* Ancla de posicionamiento para el amiguito que asoma en el footer */
+.footer { position: relative; }
