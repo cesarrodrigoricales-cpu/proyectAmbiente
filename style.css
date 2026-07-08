@@ -95,13 +95,6 @@ a:focus-visible, button:focus-visible {
   border-radius: 22px !important;
 }
 .ph::before { content: "🖼️"; font-size: 2rem; }
-.ph-label {
-  font-family: var(--font-hand);
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  padding: 0 10px;
-  text-align: center;
-}
 
 /* ==========================================================================
    REVEAL ON SCROLL (controlado por script.js)
@@ -447,7 +440,6 @@ a:focus-visible, button:focus-visible {
   background: linear-gradient(180deg, #2f6b45 0%, #1f4d31 100%);
   color: var(--white);
 }
-.bg-dark-green .ph-label { color: #dfeee0; }
 
 .container { width: 90%; max-width: 1120px; margin: 0 auto; padding: 20px 10px; position: relative; z-index: 5; }
 
@@ -502,19 +494,32 @@ a:focus-visible, button:focus-visible {
 .prob-card h4 { font-size: 1.1rem; margin-bottom: 6px; }
 .prob-card p { font-size: 0.92rem; color: var(--ink-soft); }
 
+/* ---- Fotos: marco tipo Polaroid con inclinación aleatoria y zoom al pasar el mouse ---- */
 .section-photos { margin-top: 40px; }
 .photos-label { font-family: var(--font-hand); font-size: 1.3rem; margin-bottom: 16px; text-align: center; }
-.photos-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+.photos-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
 .photo-slot {
   background: var(--white);
-  padding: 10px;
+  padding: 10px 10px 16px;
   border-radius: 20px;
   border: var(--toon-border);
   box-shadow: var(--toon-shadow-sm);
   transition: var(--bounce);
+  transform: rotate(-2deg);
 }
-.photo-slot:hover { transform: rotate(-2deg) scale(1.03); }
-.photo-slot img { border-radius: 12px; border: 2px solid var(--ink); width: 100%; height: 160px; object-fit: cover; }
+.photo-slot:nth-child(even) { transform: rotate(2deg); }
+.photo-slot:nth-child(3n) { transform: rotate(-1deg); }
+.photo-slot:hover { transform: rotate(0deg) scale(1.05) translateY(-4px); box-shadow: 9px 9px 0px var(--ink); z-index: 3; position: relative; }
+.photo-slot img {
+  border-radius: 12px;
+  border: 2px solid var(--ink);
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s ease;
+  filter: saturate(1.08) contrast(1.03);
+}
+.photo-slot:hover img { transform: scale(1.08); }
 
 /* ==========================================================================
    JUSTIFICACIÓN
@@ -526,8 +531,15 @@ a:focus-visible, button:focus-visible {
   box-shadow: var(--toon-shadow);
   border-radius: 26px;
   overflow: hidden;
+  position: relative;
 }
-.just-img-wrap img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+.just-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; min-height: 320px;
+  filter: saturate(1.1) contrast(1.03);
+  transition: transform 0.6s ease;
+}
+.just-img-wrap:hover img { transform: scale(1.05); }
 
 .just-text p { font-size: 1.08rem; margin-bottom: 14px; line-height: 1.65; }
 
@@ -596,45 +608,20 @@ a:focus-visible, button:focus-visible {
 }
 .jornada-badge--gold { background: var(--sun); }
 
-.act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-.act-card {
-  background: var(--cream);
-  border: var(--toon-border);
-  box-shadow: var(--toon-shadow-sm);
-  border-radius: 22px;
-  overflow: hidden;
-  transition: var(--bounce);
-}
-.act-card:hover { transform: scale(1.03) rotate(-1deg); }
-.act-card-img { border-bottom: var(--toon-border); }
-.act-card-img img { width: 100%; height: 140px; object-fit: cover; }
-.act-card-img.ph { border-radius: 0 !important; border: none !important; min-height: 140px; }
-.act-card-body { padding: 16px; }
-.act-duration {
-  background: var(--ink);
-  color: var(--white);
-  font-family: var(--font-title);
-  padding: 3px 12px;
-  border-radius: 10px;
-  font-size: 0.78rem;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-.act-card h4 { font-size: 1.08rem; margin-bottom: 6px; line-height: 1.25; }
-.act-card p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.45; }
-
-.jornada-media { display: grid; grid-template-columns: 42% 58%; gap: 20px; margin-top: 26px; }
+.jornada-media { display: grid; grid-template-columns: 42% 58%; gap: 24px; margin-top: 10px; align-items: stretch; }
 .video-slot {
   background: var(--ink);
   border-radius: 20px;
   padding: 10px;
   border: var(--toon-border);
+  box-shadow: var(--toon-shadow-sm);
 }
 .video-slot video { width: 100%; border-radius: 12px; display: block; }
 .media-hint { font-family: var(--font-hand); color: var(--white); font-size: 0.95rem; margin-top: 8px; text-align: center; }
 .media-hint code { background: rgba(255,255,255,0.15); padding: 1px 6px; border-radius: 6px; }
-.jornada-media .photos-row { grid-template-columns: repeat(3, 1fr); }
-.jornada-media .photo-slot img { height: 110px; }
+.jornada-media .photos-row { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.jornada-media .photo-slot { padding: 6px 6px 10px; }
+.jornada-media .photo-slot img { height: 130px; }
 
 /* ==========================================================================
    GALERÍA
@@ -669,14 +656,20 @@ a:focus-visible, button:focus-visible {
   cursor: pointer;
   transition: var(--bounce);
 }
-.gallery-item:hover { transform: scale(1.02) rotate(-1deg); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.gallery-item:hover { transform: scale(1.02) rotate(-1deg); box-shadow: 9px 9px 0px var(--ink); z-index: 2; }
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; border-radius: 0;
+  filter: saturate(1.1) contrast(1.03);
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.12); }
 .gallery-item--wide { grid-column: span 2; }
 .gallery-item--tall { grid-row: span 2; }
 .gallery-item.filtered-out { display: none; }
 .gallery-overlay {
   position: absolute; inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 55%);
   display: flex; align-items: flex-end; justify-content: center;
   opacity: 0; transition: opacity 0.25s ease;
   padding-bottom: 12px;
@@ -735,17 +728,19 @@ a:focus-visible, button:focus-visible {
 .team-card:nth-child(odd):hover { transform: translateY(-6px) rotate(-1deg); }
 
 .team-photo {
-  width: 110px; height: 110px;
+  width: 116px; height: 116px;
   border-radius: 50%;
   border: var(--toon-border);
   margin: 0 auto 14px auto;
   overflow: hidden;
   background: var(--sky);
+  box-shadow: 0 0 0 5px var(--white), 0 0 0 8px var(--sun);
+  transition: var(--bounce);
 }
-.team-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.team-card:hover .team-photo { box-shadow: 0 0 0 5px var(--white), 0 0 0 8px var(--berry); transform: scale(1.05); }
+.team-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; transition: transform 0.4s ease; }
 .team-photo.ph { border-radius: 50% !important; min-height: 110px; }
 .team-photo.ph::before { font-size: 1.4rem; }
-.team-photo.ph .ph-label { font-size: 0.68rem; padding: 0 6px; }
 
 .team-name { font-size: 1.02rem; margin-bottom: 8px; line-height: 1.2; }
 .team-role {
@@ -766,7 +761,8 @@ a:focus-visible, button:focus-visible {
   border-radius: 26px;
   overflow: hidden;
 }
-.group-img-wrap img { width: 100%; max-height: 420px; object-fit: cover; }
+.group-img-wrap img { width: 100%; max-height: 420px; object-fit: cover; transition: transform 0.6s ease; }
+.group-img-wrap:hover img { transform: scale(1.04); }
 .group-img-wrap.ph { border-radius: 26px !important; min-height: 260px; }
 
 /* ==========================================================================
