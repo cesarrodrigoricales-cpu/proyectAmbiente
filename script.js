@@ -188,8 +188,10 @@ const lightboxNext  = document.getElementById('lightboxNext');
 let currentLightboxIndex = 0;
 let visibleImages = [];
 
-function openLightbox(index) {
-  visibleImages = [...galleryItems]
+// `imagesOverride`: permite abrir el lightbox con un set de imágenes propio
+// (por ejemplo, las fotos de una sola jornada) en lugar de la galería general.
+function openLightbox(index, imagesOverride) {
+  visibleImages = imagesOverride || [...galleryItems]
     .filter(i => !i.classList.contains('hidden'))
     .map(i => i.querySelector('img'));
 
@@ -236,6 +238,20 @@ if (lightbox && lightboxImg) {
     if (e.key === 'Escape')     closeLightbox();
     if (e.key === 'ArrowLeft')  navigateLightbox(-1);
     if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  // ── Zoom para las fotos fuera de la galería (jornadas, justificación, etc.) ──
+  // Al hacer clic se abren grandes en el mismo lightbox, navegando solo
+  // entre las fotos de esa misma fila (ej. las 5 fotos de una jornada).
+  document.querySelectorAll('.photo-slot img').forEach(img => {
+    if (img.closest('.gallery-item')) return; // esas ya se manejan arriba
+
+    img.addEventListener('click', () => {
+      const row  = img.closest('.photos-row');
+      const imgs = row ? [...row.querySelectorAll('img')] : [img];
+      const idx  = imgs.indexOf(img);
+      openLightbox(idx, imgs);
+    });
   });
 }
 
