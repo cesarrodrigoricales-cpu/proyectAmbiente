@@ -800,6 +800,96 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
+   GALERÍA — VIDEOS DESTACADOS (centrado)
+   ========================================================================== */
+.gallery-featured-videos { text-align: center; margin-bottom: 44px; }
+.photos-label--dark { color: var(--sun); font-size: 1.5rem; }
+.featured-videos-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 18px;
+  perspective: 900px;
+}
+.video-slot--featured {
+  position: relative;
+  border-color: var(--sun);
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 8px var(--sun), var(--toon-shadow);
+  width: 320px;
+  flex-shrink: 0;
+  transition: transform 0.4s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.video-slot--featured:hover {
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 8px var(--berry), 10px 10px 0px var(--ink);
+}
+.video-slot--featured video {
+  aspect-ratio: 4 / 5;
+  height: auto;
+  max-height: none;
+  object-fit: cover;
+  background: #000;
+}
+.video-slot--featured::before {
+  content: "⭐ Importante";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  background: var(--sun);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  padding: 3px 14px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+@media (max-width: 700px) {
+  .video-slot--featured { width: 100%; max-width: 320px; }
+}
+
+/* ---- Fotos recién agregadas ---- */
+.gallery-new-label {
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--sun);
+  margin-bottom: 18px;
+}
+.gallery-item--new {
+  border-color: var(--sun);
+  box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--sun-deep), var(--toon-shadow-sm);
+  animation: newGlow 2.6s ease-in-out infinite;
+}
+.gallery-item--new:hover { box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--berry), 9px 9px 0px var(--ink); }
+.new-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 1.7rem;
+  z-index: 4;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
+  animation: newBadgePulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes newGlow {
+  0%, 100% { box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--sun-deep), var(--toon-shadow-sm); }
+  50% { box-shadow: 0 0 0 3px var(--white), 0 0 0 9px var(--sun-deep), var(--toon-shadow-sm); }
+}
+@keyframes newBadgePulse {
+  0%, 100% { transform: scale(1) rotate(-4deg); }
+  50% { transform: scale(1.18) rotate(6deg); }
+}
+
+/* ==========================================================================
    GALERÍA
    ========================================================================== */
 .gallery-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 30px; }
@@ -1157,3 +1247,349 @@ a:focus-visible, button:focus-visible {
 
 /* Ancla de posicionamiento para el amiguito que asoma en el footer */
 .footer { position: relative; }
+
+/* ==========================================================================
+   ✨ NUEVO — MÁS VIDA Y EMOCIÓN ✨
+   Barra de crecimiento · Contadores animados · Parallax de blobs ·
+   Mascota con personalidad · Micro-interacciones · Línea de tiempo emocional
+   ========================================================================== */
+
+/* ---- Barra de crecimiento (la semilla crece mientras lees) ---- */
+.growth-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 8px;
+  z-index: 1100;
+  background: rgba(255,255,255,0.35);
+  pointer-events: none;
+}
+.growth-track { width: 100%; height: 100%; position: relative; }
+.growth-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--grass-deep), var(--grass), var(--sun));
+  border-right: 3px solid var(--ink);
+  box-shadow: 0 0 10px rgba(76,175,60,0.6);
+  transition: width 0.15s ease-out;
+  position: relative;
+}
+.growth-fill::after {
+  content: "🌱";
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.25));
+}
+
+.growth-stage {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 1100;
+  background: var(--white);
+  border: var(--toon-border);
+  box-shadow: var(--toon-shadow-sm);
+  border-radius: 50px;
+  padding: 6px 16px 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--bounce);
+}
+.growth-stage-emoji {
+  font-size: 1.4rem;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.growth-stage-emoji.pop { animation: growthPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes growthPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.5) rotate(-10deg); }
+  70% { transform: scale(0.9) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.growth-stage-label {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .growth-stage { top: 10px; right: 10px; padding: 5px 10px 5px 8px; }
+  .growth-stage-label { display: none; }
+}
+
+/* ---- Título del hero: entrada letra a letra con más carácter ---- */
+.hero-title-line {
+  display: inline-block;
+}
+.hero-title.titles-ready .hero-title-line {
+  animation: titleDrop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.hero-title.titles-ready em.hero-title-line {
+  animation-delay: 0.15s;
+}
+@keyframes titleDrop {
+  0% { transform: translateY(-40px) rotate(-4deg); opacity: 0; }
+  60% { transform: translateY(6px) rotate(1deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+
+/* Cursor de "escritura" para el subtítulo tipo máquina de escribir */
+.hero-sub-title::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: var(--ink);
+  vertical-align: -0.15em;
+  margin-left: 3px;
+  animation: caretBlink 0.9s steps(1) infinite;
+}
+.hero-sub-title.typing-done::after { display: none; }
+@keyframes caretBlink { 50% { opacity: 0; } }
+
+/* Botones con "pop" de energía extra al hacer clic */
+.btn-pop { position: relative; overflow: visible; }
+.btn-pop.clicked { animation: btnPop 0.4s ease; }
+@keyframes btnPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* ---- Tarjetas con inclinación suave que sigue al cursor ---- */
+.tilt-card { transform-style: preserve-3d; will-change: transform; }
+
+/* ---- Frase emocional por jornada ---- */
+.jornada-feeling {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--sky-text);
+  background: var(--sky);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--ink);
+  margin-bottom: 22px;
+  transform: rotate(-1deg);
+}
+.jornada--final .jornada-feeling { background: var(--sun); color: var(--ink); }
+
+/* ---- Línea de tiempo entre jornadas: un tallo que va creciendo ---- */
+.jornada-timeline {
+  position: absolute;
+  left: 50%;
+  width: 6px;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(180deg, var(--grass) 0, var(--grass) 14px, transparent 14px, transparent 24px);
+  border-radius: 6px;
+  opacity: 0.55;
+  z-index: 0;
+  display: none;
+}
+@media (min-width: 860px) {
+  .jornada-timeline { display: block; }
+}
+
+/* ---- Confeti de celebración cuando aparece la encuesta ---- */
+.donut-chart.celebrated .donut-seg--si { filter: drop-shadow(0 0 6px rgba(76,175,60,0.7)); }
+
+/* ---- Nota emocional final en el footer ---- */
+.footer-thankyou {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--sky-text);
+  max-width: 640px;
+  margin: 0 auto 22px auto;
+  background: var(--cream);
+  border: 2px dashed var(--ink);
+  border-radius: 18px;
+  padding: 14px 22px;
+  transform: rotate(-0.6deg);
+}
+
+/* ---- Corazones/estrellas que flotan al hacer clic en la mascota ---- */
+.burst-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 950;
+  font-size: 1.4rem;
+  animation: burstFloat 1.1s ease-out forwards;
+}
+@keyframes burstFloat {
+  0% { transform: translate(0,0) scale(0.6) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1.3) rotate(var(--rot)); opacity: 0; }
+}
+
+/* ---- Contadores: leve "pop" al terminar de contar ---- */
+[data-count-to] { display: inline-block; }
+.count-pop { animation: countPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes countPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.22); color: var(--grass-deep); }
+  100% { transform: scale(1); }
+}
+
+/* ---- Efecto hover con "sparkle" en las tarjetas del equipo ---- */
+.team-card { position: relative; }
+.team-card::after {
+  content: "✨";
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: scale(0.5) rotate(-10deg);
+  transition: var(--bounce);
+  pointer-events: none;
+}
+.team-card:hover::after { opacity: 1; transform: scale(1.1) rotate(8deg); }
+
+/* ---- Reveal escalonado más expresivo para fotos dentro de una jornada ---- */
+.jornada-media .photo-slot { transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+
+/* Respeta accesibilidad: sin caret parpadeante ni pops si se pide menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .hero-sub-title::after { display: none; }
+  .growth-fill { transition: none; }
+}
+
+/* ==========================================================================
+   🎬 VIDEOS CON MÁS VIDA — botón de play a lo cuento, spinner, mute-chip,
+   brillo de "reproduciendo" y tarjetas de repuesto si un video falla
+   ========================================================================== */
+
+.video-slot {
+  position: relative;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+.video-slot video {
+  background: linear-gradient(135deg, #274b3a 0%, #14261c 100%);
+}
+.video-slot.is-playing {
+  box-shadow: var(--toon-shadow), 0 0 0 4px var(--grass);
+}
+
+/* ---- Botón de reproducir, grande y "gelatinoso" ---- */
+.video-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 78px; height: 78px;
+  border-radius: 50%;
+  background: var(--sun);
+  border: var(--toon-border);
+  box-shadow: var(--toon-shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, background 0.25s ease;
+  animation: playBtnBreathe 2.4s ease-in-out infinite;
+}
+.video-play-btn::after {
+  content: "";
+  border-style: solid;
+  border-width: 13px 0 13px 21px;
+  border-color: transparent transparent transparent var(--ink);
+  margin-left: 6px;
+}
+.video-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.14) rotate(-4deg);
+  background: var(--berry);
+}
+.video-play-btn:active { transform: translate(-50%, -50%) scale(0.94); }
+.video-play-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.5);
+  animation: none;
+}
+@keyframes playBtnBreathe {
+  0%, 100% { box-shadow: var(--toon-shadow-sm); }
+  50% { box-shadow: var(--toon-shadow-sm), 0 0 0 8px rgba(255, 210, 63, 0.35); }
+}
+
+/* ---- Spinner de carga, con hojita girando ---- */
+.video-loading {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.video-loading.show {
+  opacity: 1;
+  animation: spinLeaf 1s linear infinite;
+}
+@keyframes spinLeaf { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* ---- Chip de "vista previa muda" para los videos destacados ---- */
+.video-mute-chip {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 3px solid var(--ink);
+  box-shadow: var(--toon-shadow-sm);
+  z-index: 5;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--bounce);
+  animation: chipPulse 1.8s ease-in-out infinite;
+}
+.video-mute-chip:hover { transform: translateX(-50%) scale(1.06); background: var(--sun); }
+.video-mute-chip.hidden { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(10px); }
+@keyframes chipPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.05); }
+}
+
+/* ---- Repuesto amigable si un video no carga ---- */
+.video-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 220px;
+  background: repeating-linear-gradient(135deg, #274b3a, #274b3a 10px, #1f3c2d 10px, #1f3c2d 20px);
+  border-radius: 14px;
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+}
+.video-fallback-icon { font-size: 2.6rem; }
+.video-fallback-text { font-family: var(--font-hand); font-size: 1.05rem; max-width: 280px; }
+
+/* En video destacado, el botón de play va un poco más grande */
+.video-slot--featured .video-play-btn { width: 88px; height: 88px; }
+
+@media (max-width: 640px) {
+  .video-play-btn { width: 64px; height: 64px; }
+  .video-play-btn::after { border-width: 10px 0 10px 17px; }
+  .video-slot--featured .video-play-btn { width: 74px; height: 74px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-play-btn, .video-mute-chip { animation: none; }
+}

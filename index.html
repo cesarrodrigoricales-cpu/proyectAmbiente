@@ -13,6 +13,17 @@
 </head>
 <body>
 
+  <!-- BARRA DE CRECIMIENTO — la semilla crece mientras lees -->
+  <div class="growth-progress" id="growthProgress">
+    <div class="growth-track">
+      <div class="growth-fill" id="growthFill"></div>
+    </div>
+  </div>
+  <div class="growth-stage" id="growthStage" title="¡Mira cómo crecemos juntos!">
+    <span class="growth-stage-emoji" id="growthStageEmoji">🌰</span>
+    <span class="growth-stage-label" id="growthStageLabel">Semilla</span>
+  </div>
+
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-logo">
@@ -35,9 +46,9 @@
 
   <!-- ══════════ HERO / TÍTULO ══════════ -->
   <section id="inicio" class="hero">
-    <div class="kawaii-blob blob-pink blob-hero-1"></div>
-    <div class="kawaii-blob blob-yellow blob-hero-2"></div>
-    <div class="kawaii-blob blob-blue blob-hero-3"></div>
+    <div class="kawaii-blob blob-pink blob-hero-1" data-depth="0.15"></div>
+    <div class="kawaii-blob blob-yellow blob-hero-2" data-depth="0.25"></div>
+    <div class="kawaii-blob blob-blue blob-hero-3" data-depth="0.35"></div>
     <span class="sticker-star" style="top:10%; right:20%;">⭐</span>
     <span class="sticker-star" style="top:30%; right:8%; animation-delay:-1s; font-size:1.4rem;">✨</span>
     <span class="sticker-star" style="bottom:32%; left:8%; animation-delay:-1.8s; font-size:1.6rem;">🌈</span>
@@ -47,10 +58,10 @@
 
     <div class="hero-content">
       <p class="hero-eyebrow reveal">Universidad Autónoma de Ica · Facultad de Ciencias Administración e Ingeniería</p>
-      <h1 class="hero-title reveal">
-        Sembrando<br/><em>Conciencia</em>
+      <h1 class="hero-title reveal" id="heroTitle">
+        <span class="hero-title-line" data-text="Sembrando">Sembrando</span><br/><em class="hero-title-line" data-text="Conciencia">Conciencia</em>
       </h1>
-      <p class="hero-sub-title reveal">Proyecto Espacio Verde para la Educación Ambiental 🌻</p>
+      <p class="hero-sub-title reveal" id="heroSubtitle"></p>
       <div class="hero-meta reveal">
         <span class="meta-tag">📚 Cultura Ambiental</span>
         <span class="meta-tag">🏭 Ingeniería Industrial</span>
@@ -58,8 +69,8 @@
         <span class="meta-tag">🏫 I.E. Chinchaysuyo - Balconcito</span>
       </div>
       <div class="hero-cta reveal">
-        <a href="#actividades" class="btn-primary">Ver actividades 🚀</a>
-        <a href="#galeria" class="btn-ghost">Ver fotos 📸</a>
+        <a href="#actividades" class="btn-primary btn-pop">Ver actividades 🚀</a>
+        <a href="#galeria" class="btn-ghost btn-pop">Ver fotos 📸</a>
       </div>
     </div>
 
@@ -70,15 +81,15 @@
 
     <div class="hero-stats">
       <div class="stat-chip reveal-right">
-        <span class="stat-num">4</span>
+        <span class="stat-num" data-count-to="4">0</span>
         <span class="stat-label">Fechas</span>
       </div>
       <div class="stat-chip reveal-right" style="animation-delay:.2s">
-        <span class="stat-num">12+</span>
+        <span class="stat-num" data-count-to="12" data-suffix="+">0</span>
         <span class="stat-label">Actividades</span>
       </div>
       <div class="stat-chip reveal-right" style="animation-delay:.4s">
-        <span class="stat-num">5</span>
+        <span class="stat-num" data-count-to="5">0</span>
         <span class="stat-label">Integrantes</span>
       </div>
     </div>
@@ -92,10 +103,10 @@
 
   <!-- ══════════ PROBLEMA ══════════ -->
   <section id="problema" class="section-block bg-white style-kids">
-    <div class="kawaii-blob blob-green" style="width:150px;height:150px;top:6%;right:38%;"></div>
-    <div class="kawaii-blob blob-yellow blob-prob-corner"></div>
-    <div class="kawaii-blob blob-circle blob-tangerine" style="width:58px;height:58px;top:0%;left:47%;"></div>
-    <div class="kawaii-blob blob-round-square blob-blue" style="width:70px;height:70px;bottom:4%;left:1%;"></div>
+    <div class="kawaii-blob blob-green" style="width:150px;height:150px;top:6%;right:38%;" data-depth="0.1"></div>
+    <div class="kawaii-blob blob-yellow blob-prob-corner" data-depth="0.2"></div>
+    <div class="kawaii-blob blob-circle blob-tangerine" style="width:58px;height:58px;top:0%;left:47%;" data-depth="0.3"></div>
+    <div class="kawaii-blob blob-round-square blob-blue" style="width:70px;height:70px;bottom:4%;left:1%;" data-depth="0.15"></div>
 
     <div class="container">
       <div class="section-header">
@@ -109,22 +120,22 @@
           <p>Frente a ello, surge la propuesta de desarrollar acciones ambientales y actividades dinámicas que permitan incentivar en los estudiantes una mayor participación en el cuidado de su entorno, promoviendo hábitos de limpieza, reciclaje y conservación de las áreas verdes de manera creativa y participativa.</p>
         </div>
         <div class="problem-cards reveal-right">
-          <div class="prob-card">
+          <div class="prob-card tilt-card">
             <span class="prob-icon">🗑️</span>
             <h4>Residuos sólidos</h4>
             <p>Presencia de botellas plásticas y basura cerca de las áreas verdes del plantel.</p>
           </div>
-          <div class="prob-card">
+          <div class="prob-card tilt-card">
             <span class="prob-icon">🌱</span>
             <h4>Falta de conciencia</h4>
             <p>Hábitos insuficientes de responsabilidad ambiental en la comunidad escolar.</p>
           </div>
-          <div class="prob-card">
+          <div class="prob-card tilt-card">
             <span class="prob-icon">♻️</span>
             <h4>Manejo inadecuado</h4>
             <p>Clasificación incorrecta y descarte inapropiado de los residuos dentro de la institución.</p>
           </div>
-          <div class="prob-card">
+          <div class="prob-card tilt-card">
             <span class="prob-icon">🏫</span>
             <h4>Necesidad de acción</h4>
             <p>Urgencia de implementar programas educativos prácticos sobre cuidado ambiental.</p>
@@ -141,10 +152,10 @@
 
   <!-- ══════════ JUSTIFICACIÓN ══════════ -->
   <section id="justificacion" class="section-block bg-pale style-kids">
-    <div class="kawaii-blob blob-blue blob-just-left"></div>
-    <div class="kawaii-blob blob-pink blob-just-right"></div>
-    <div class="kawaii-blob blob-circle blob-grape" style="width:54px;height:54px;top:-10px;right:9%;"></div>
-    <div class="kawaii-blob blob-drop blob-yellow" style="width:62px;height:62px;bottom:14%;left:6%;"></div>
+    <div class="kawaii-blob blob-blue blob-just-left" data-depth="0.2"></div>
+    <div class="kawaii-blob blob-pink blob-just-right" data-depth="0.15"></div>
+    <div class="kawaii-blob blob-circle blob-grape" style="width:54px;height:54px;top:-10px;right:9%;" data-depth="0.3"></div>
+    <div class="kawaii-blob blob-drop blob-yellow" style="width:62px;height:62px;bottom:14%;left:6%;" data-depth="0.25"></div>
 
     <div class="container">
       <div class="section-header">
@@ -191,9 +202,9 @@
 
   <!-- ══════════ ACTIVIDADES ══════════ -->
   <section id="actividades" class="section-block bg-white style-kids">
-    <div class="kawaii-blob blob-yellow blob-act-top"></div>
-    <div class="kawaii-blob blob-green blob-act-middle"></div>
-    <div class="kawaii-blob blob-drop blob-tangerine" style="width:64px;height:64px;top:-6px;left:47%;"></div>
+    <div class="kawaii-blob blob-yellow blob-act-top" data-depth="0.2"></div>
+    <div class="kawaii-blob blob-green blob-act-middle" data-depth="0.15"></div>
+    <div class="kawaii-blob blob-drop blob-tangerine" style="width:64px;height:64px;top:-6px;left:47%;" data-depth="0.3"></div>
 
     <div class="container">
       <div class="section-header">
@@ -201,6 +212,9 @@
         <h2 class="section-title reveal">Actividades Programadas</h2>
         <p class="section-desc reveal">4 jornadas llenas de diversión de 2 horas cada una, con actividades lúdicas y educativas diseñadas especialmente para los niños.</p>
       </div>
+
+      <!-- LÍNEA DE VIDA — vínculo emocional entre jornadas -->
+      <div class="jornada-timeline" aria-hidden="true"></div>
 
       <!-- JORNADA 1 -->
       <div class="jornada reveal">
@@ -210,6 +224,7 @@
           <h3 class="jornada-fecha">📅 Miércoles 03 de Junio</h3>
           <span class="jornada-duracion">⏱ 2 horas</span>
         </div>
+        <p class="jornada-feeling">🌱 El primer paso: conociéndonos y descubriendo por qué cuidar nuestro colegio.</p>
 
         <div class="jornada-media reveal">
           <div class="video-slot">
@@ -236,6 +251,7 @@
           <h3 class="jornada-fecha">📅 Miércoles 17 de Junio</h3>
           <span class="jornada-duracion">⏱ 2 horas</span>
         </div>
+        <p class="jornada-feeling">🌿 Manitos a la obra: primeros juegos ecológicos y mucha risa en el patio.</p>
 
         <div class="jornada-media reveal">
           <div class="video-slot">
@@ -263,6 +279,7 @@
           <h3 class="jornada-fecha">📅 Miércoles 1 de Julio</h3>
           <span class="jornada-duracion">⏱ 2 horas</span>
         </div>
+        <p class="jornada-feeling">🌻 Creciendo juntos: los niños ya cuidan las áreas verdes por su cuenta.</p>
 
         <div class="jornada-media reveal">
           <div class="video-slot">
@@ -290,6 +307,7 @@
           <h3 class="jornada-fecha">📅 Miércoles 17 de Julio</h3>
           <span class="jornada-duracion">⏱ 2 horas</span>
         </div>
+        <p class="jornada-feeling">🎉 ¡Lo logramos! Celebramos todo lo aprendido con abrazos, risas y mucho orgullo.</p>
 
         <div class="jornada-media reveal">
           <div class="video-slot">
@@ -319,9 +337,9 @@
 
   <!-- ══════════ ENCUESTA DE SATISFACCIÓN ══════════ -->
   <section id="encuesta" class="section-block bg-pale style-kids">
-    <div class="kawaii-blob blob-yellow blob-circle" style="width:64px;height:64px;top:-18px;left:10%;"></div>
-    <div class="kawaii-blob blob-pink blob-drop" style="width:56px;height:56px;bottom:6%;right:6%;"></div>
-    <div class="kawaii-blob blob-blue blob-round-square" style="width:60px;height:60px;top:8%;right:20%;"></div>
+    <div class="kawaii-blob blob-yellow blob-circle" style="width:64px;height:64px;top:-18px;left:10%;" data-depth="0.2"></div>
+    <div class="kawaii-blob blob-pink blob-drop" style="width:56px;height:56px;bottom:6%;right:6%;" data-depth="0.15"></div>
+    <div class="kawaii-blob blob-blue blob-round-square" style="width:60px;height:60px;top:8%;right:20%;" data-depth="0.3"></div>
 
     <div class="container">
       <div class="section-header">
@@ -339,10 +357,10 @@
               <tr><th>Respuesta</th><th>Frecuencia</th><th>Porcentaje</th></tr>
             </thead>
             <tbody>
-              <tr class="row-si"><td>😊 Sí</td><td>25</td><td>92.6 %</td></tr>
-              <tr class="row-mas"><td>😐 Más o menos</td><td>2</td><td>7.4 %</td></tr>
+              <tr class="row-si"><td>😊 Sí</td><td data-count-to="25">0</td><td><span data-count-to="92.6" data-decimals="1" data-suffix=" %">0 %</span></td></tr>
+              <tr class="row-mas"><td>😐 Más o menos</td><td data-count-to="2">0</td><td><span data-count-to="7.4" data-decimals="1" data-suffix=" %">0 %</span></td></tr>
               <tr class="row-no"><td>☹️ No</td><td>0</td><td>0 %</td></tr>
-              <tr class="row-total"><td>Total</td><td>27</td><td>100 %</td></tr>
+              <tr class="row-total"><td>Total</td><td data-count-to="27">0</td><td>100 %</td></tr>
             </tbody>
           </table>
           <p class="encuesta-desc">La tabla muestra la frecuencia y el porcentaje de cada alternativa de respuesta, permitiendo analizar de manera clara el nivel de satisfacción, aprendizaje e impacto alcanzado mediante las actividades desarrolladas.</p>
@@ -358,7 +376,7 @@
                 stroke-dasharray="32.5 407.3" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
               <circle class="donut-seg donut-seg--si" cx="100" cy="100" r="70" fill="none" stroke="var(--grass-deep)" stroke-width="34"
                 stroke-dasharray="407.3 32.5" stroke-dashoffset="-32.5" transform="rotate(-90 100 100)"/>
-              <text x="100" y="94" text-anchor="middle" class="donut-center-num">92.6%</text>
+              <text x="100" y="94" text-anchor="middle" class="donut-center-num" data-count-to="92.6" data-decimals="1" data-suffix="%">0%</text>
               <text x="100" y="114" text-anchor="middle" class="donut-center-label">dijo "Sí"</text>
             </svg>
             <ul class="donut-legend">
@@ -378,11 +396,11 @@
             </div>
             <div class="bar-track">
               <div class="bar-col">
-                <div class="bar bar-si" style="--bar-h:89%;"><span class="bar-value">25</span></div>
+                <div class="bar bar-si" style="--bar-h:89%;"><span class="bar-value" data-count-to="25">0</span></div>
                 <span class="bar-label">Sí</span>
               </div>
               <div class="bar-col">
-                <div class="bar bar-mas" style="--bar-h:7%;"><span class="bar-value">2</span></div>
+                <div class="bar bar-mas" style="--bar-h:7%;"><span class="bar-value" data-count-to="2">0</span></div>
                 <span class="bar-label">Más o menos</span>
               </div>
               <div class="bar-col">
@@ -409,8 +427,8 @@
 
   <!-- ══════════ GALERÍA GENERAL ══════════ -->
   <section id="galeria" class="section-block bg-dark-green">
-    <div class="kawaii-blob blob-circle blob-yellow" style="width:56px;height:56px;top:0;left:8%;"></div>
-    <div class="kawaii-blob blob-circle blob-pink" style="width:50px;height:50px;top:5%;right:9%;"></div>
+    <div class="kawaii-blob blob-circle blob-yellow" style="width:56px;height:56px;top:0;left:8%;" data-depth="0.2"></div>
+    <div class="kawaii-blob blob-circle blob-pink" style="width:50px;height:50px;top:5%;right:9%;" data-depth="0.15"></div>
 
     <div class="container">
       <div class="section-header">
@@ -419,15 +437,82 @@
         <p class="section-desc reveal">Agrega tus fotos con los nombres indicados y aparecerán automáticamente aquí.</p>
       </div>
 
+      <!-- VIDEOS DESTACADOS (centrado) -->
+      <div class="gallery-featured-videos">
+        <p class="photos-label photos-label--dark">🎬 Videos Destacados</p>
+        <div class="featured-videos-row">
+          <div class="video-slot video-slot--featured reveal">
+            <video controls playsinline preload="metadata">
+              <source src="videos/newVideos/WhatsApp Video 2026-07-15 at 6.43.15 PM.mp4" type="video/mp4"/>
+            </video>
+            <p class="media-hint">📹 Momento destacado 1</p>
+          </div>
+          <div class="video-slot video-slot--featured reveal-right">
+            <video controls playsinline preload="metadata">
+              <source src="videos/newVideos/WhatsApp Video 2026-07-15 at 6.43.16 PM (1).mp4" type="video/mp4"/>
+            </video>
+            <p class="media-hint">📹 Momento destacado 2</p>
+          </div>
+        </div>
+      </div>
+
       <div class="gallery-filters reveal">
         <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="nuevas">🆕 Nuevas</button>
         <button class="filter-btn" data-filter="jornada1">Jornada 1</button>
         <button class="filter-btn" data-filter="jornada2">Jornada 2</button>
         <button class="filter-btn" data-filter="jornada3">Jornada 3</button>
         <button class="filter-btn" data-filter="jornada4">Jornada 4</button>
       </div>
 
+      <p class="gallery-new-label reveal">✨ ¡Mira lo último que agregamos! ✨</p>
+
       <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item gallery-item--tall gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.12 PM.jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.13 PM.jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--wide gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.14 PM (1).jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.14 PM (2).jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.14 PM.jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--tall gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.15 PM (1).jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.15 PM (2).jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--wide gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.15 PM (3).jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
+        <div class="gallery-item gallery-item--new reveal" data-cat="nuevas">
+          <span class="new-badge">🆕</span>
+          <img src="images/gallery/newGallery/WhatsApp Image 2026-07-15 at 6.43.15 PM.jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
+          <div class="gallery-overlay"><span>✨ Nueva</span></div>
+        </div>
         <div class="gallery-item gallery-item--tall reveal" data-cat="jornada1">
           <img src="images/gallery/WhatsApp Image 2026-07-08 at 5.06.47 PM (1).jpeg" alt="" onerror="this.parentElement.classList.add('ph')"/>
           <div class="gallery-overlay"><span>Jornada 1</span></div>
@@ -554,9 +639,9 @@
 
   <!-- ══════════ INTEGRANTES ══════════ -->
   <section id="integrantes" class="section-block bg-pale style-kids">
-    <div class="kawaii-blob blob-pink blob-team-1"></div>
-    <div class="kawaii-blob blob-blue blob-team-2"></div>
-    <div class="kawaii-blob blob-drop blob-grape" style="width:58px;height:58px;bottom:-8px;right:11%;"></div>
+    <div class="kawaii-blob blob-pink blob-team-1" data-depth="0.2"></div>
+    <div class="kawaii-blob blob-blue blob-team-2" data-depth="0.15"></div>
+    <div class="kawaii-blob blob-drop blob-grape" style="width:58px;height:58px;bottom:-8px;right:11%;" data-depth="0.25"></div>
 
     <div class="container">
       <div class="section-header">
@@ -631,6 +716,7 @@
   <footer class="footer">
     <div class="kawaii-blob blob-circle blob-pink" style="width:48px;height:48px;top:-22px;left:6%;"></div>
     <div class="container">
+      <p class="footer-thankyou reveal">💌 Gracias por acompañarnos en esta aventura verde. Cada botella recogida, cada planta cuidada, es una semilla de conciencia que sigue creciendo.</p>
       <button class="btn-primary footer-celebrate" id="celebrateBtn">¡Celebremos! 🎉</button>
       <div class="footer-top">
         <div class="footer-brand">
